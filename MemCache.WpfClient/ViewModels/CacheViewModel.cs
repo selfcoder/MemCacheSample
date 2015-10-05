@@ -20,7 +20,7 @@ namespace MemCache.WpfClient
         private ICommand _removeCommand;
         private ICommand _setCommand;
 
-        public CacheViewModel(ICacheClient cacheClient, Action disconnectedCallback)
+        public CacheViewModel(ICacheClient cacheClient, Action disconnectedCallback = null)
         {
             _cacheClient = cacheClient;
             _disconnectedCallback = disconnectedCallback;
