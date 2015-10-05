@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemCache.ServerHost", "MemC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemCache.WpfClient", "MemCache.WpfClient\MemCache.WpfClient.csproj", "{ACB59FE3-3548-4643-A18A-86D292414779}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemCache.Server.Tests", "MemCache.Server.Tests\MemCache.Server.Tests.csproj", "{8CFF29C5-EE81-43AA-B359-17E68BC847A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemCache.ClientServerTests", "MemCache.ClientServerTests\MemCache.ClientServerTests.csproj", "{683F6846-515E-4283-AC1F-4CD2E3346197}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{ACB59FE3-3548-4643-A18A-86D292414779}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACB59FE3-3548-4643-A18A-86D292414779}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACB59FE3-3548-4643-A18A-86D292414779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CFF29C5-EE81-43AA-B359-17E68BC847A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CFF29C5-EE81-43AA-B359-17E68BC847A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CFF29C5-EE81-43AA-B359-17E68BC847A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CFF29C5-EE81-43AA-B359-17E68BC847A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{683F6846-515E-4283-AC1F-4CD2E3346197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{683F6846-515E-4283-AC1F-4CD2E3346197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{683F6846-515E-4283-AC1F-4CD2E3346197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{683F6846-515E-4283-AC1F-4CD2E3346197}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

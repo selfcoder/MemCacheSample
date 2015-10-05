@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using System.Threading.Tasks;
-using MsgPack.Serialization;
 using Stacks.Actors;
 
 namespace MemCache.Client
@@ -49,7 +46,7 @@ namespace MemCache.Client
             CheckConnected();
 
             var buffer = await _actor.Get(key);
-            return Deserialize(buffer);
+            return Serializer.Deserialize(buffer);
         }
 
         public Task<IEnumerable<string>> GetKeys()
@@ -65,7 +62,7 @@ namespace MemCache.Client
 
             CheckConnected();
 
-            byte[] buffer = Serialize(value);
+            byte[] buffer = Serializer.Serialize(value);
             return _actor.Set(key, buffer);
         }
 
@@ -83,39 +80,6 @@ namespace MemCache.Client
         {
             if (_actor == null)
                 throw new InvalidOperationException("Not connected");
-        }
-
-        private byte[] Serialize(object value)
-        {
-            if (value == null)
-                return null;
-
-            var valueType = value.GetType();
-            var serializer = MessagePackSerializer.Get(valueType);
-            var valueTypeName = Encoding.UTF8.GetBytes(valueType.FullName);
-            using (var stream = new MemoryStream())
-            {
-                stream.Write(BitConverter.GetBytes((ushort)valueTypeName.Length), 0, 2);
-                stream.Write(valueTypeName, 0, valueTypeName.Length);
-                serializer.Pack(stream, value);
-                return stream.ToArray();
-            }
-        }
-
-        private object Deserialize(byte[] buffer)
-        {
-            if (buffer == null || buffer.Length == 0)
-                return null;
-
-            var typeNameLength = BitConverter.ToUInt16(buffer, 0);
-            var typeName = Encoding.UTF8.GetString(buffer, 2, typeNameLength);
-            var type = Type.GetType(typeName, true);
-            var serializer = MessagePackSerializer.Get(type);
-            using (var stream = new MemoryStream(buffer))
-            {
-                stream.Seek(typeNameLength + 2, SeekOrigin.Begin);
-                return serializer.Unpack(stream);
-            }
         }
     }
 }
